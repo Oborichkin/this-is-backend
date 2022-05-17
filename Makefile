@@ -1,8 +1,11 @@
-PROJECT_NAME = template
+PROJECT_NAME = theBackend
 
 .PHONY = test build push clean hooks
 
 install: venv hooks
+
+run: venv
+	$(VENV)/uvicorn $(PROJECT_NAME):app
 
 test: venv
 	$(VENV)/pytest --cov=$(PROJECT_NAME) --cov-report=html --cov-report=term tests/
