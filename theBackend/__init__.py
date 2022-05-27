@@ -3,6 +3,8 @@ from RfcParser import RFC
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from .crud import get_all_entity_names, search_entity
+
 with open("data/rfc3261.txt", "r") as f:
     rfc = RFC(f.read())
 
@@ -26,6 +28,16 @@ app.add_middleware(
 @app.get("/")
 async def root():
     return rfc.json
+
+
+@app.get("/entities")
+async def entities():
+    return get_all_entity_names()
+
+
+@app.get("/entity")
+async def entity(name: str):
+    return search_entity(name)
 
 
 @app.get("/resolved")

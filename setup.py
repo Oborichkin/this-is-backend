@@ -13,6 +13,7 @@ setuptools.setup(
         "fastapi",
         "uvicorn[standard]",
         "RfcParser @ git+https://github.com/Oborichkin/rfc-parser.git@ec534a0801ad3eb9edbcd0c4f7e11bf94372cdd1#egg=RfcParser",
-        "aiohttp"
+        "aiohttp",
+        "neo4j"
     ]
 )
